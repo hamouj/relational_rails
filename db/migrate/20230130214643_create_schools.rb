@@ -3,7 +3,7 @@ class CreateSchools < ActiveRecord::Migration[5.2]
     create_table :schools do |t|
       t.string :name
       t.integer :open_year
-      t.fully_staffed :boolean
+      t.boolean :fully_staffed
       t.timestamps
     end
   end

@@ -4,7 +4,7 @@ class CreateTeachers < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :years_at_school
       t.boolean :bilingual
-      t.references :school_id foreign_key: true
+      t.references :school, foreign_key: true
       t.timestamps
     end
   end
