@@ -1,0 +1,10 @@
+<a href="/schools">All Schools</a>
+
+<h1><%= @schools.name %></h1>
+<%@schools.show_teachers.each do |teacher|%>
+  <h3><%= teacher.name %></h3>
+  <p>Years at <%= teacher.school.name %>: <%= teacher.years_at_school %></p>
+  <p>Bilingual? <%= teacher.bilingual %></p>
+  <p>Created at <%= teacher.created_at %></p>
+  <p>Updated at <%= teacher.updated_at %></p>
+<%end%>
