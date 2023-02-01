@@ -1,7 +1,5 @@
-<a href='/teachers'>All Teachers</a>
-
 <h1><%= @teachers.name %></h1>
-<p>Works at: <%= @teachers.school.name %></p>
+<p>Works at <%= @teachers.school.name %></p>
 <p>Years at <%= @teachers.school.name %>: <%= @teachers.years_at_school %></p>
 <p>Bilingual? <%= @teachers.bilingual %></p>
 <p>Created at <%= @teachers.created_at %></p>
