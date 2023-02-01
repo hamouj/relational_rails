@@ -5,6 +5,7 @@ class SchoolsController < ApplicationController
 
   def show
     @schools = School.find(params[:id])
+    @count = @schools.teacher_count
   end
 
   def show_teachers

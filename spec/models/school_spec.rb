@@ -22,4 +22,18 @@ describe School, type: :model do
       expect(School.order_schools).to eq([school3, school2, school])
     end
   end
+
+  describe '#teacher_count' do
+    it 'counts the number of teachers at a specific school' do
+      school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+      school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+
+      teacher = school.teachers.create!(name: 'Mrs.Vicario', years_at_school: 7, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
+      teacher2 = school.teachers.create!(name: 'Mrs. Auch', years_at_school: 10, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
+      teacher3 = school2.teachers.create!(name: 'Mrs. Hall', years_at_school: 15, bilingual: true, created_at: DateTime.now, updated_at: DateTime.now)
+
+      expect(school.teacher_count).to eq(2)
+      expect(school2.teacher_count).to eq(1)
+    end
+  end
 end

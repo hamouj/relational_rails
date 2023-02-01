@@ -8,4 +8,8 @@ class School < ApplicationRecord
   def self.order_schools
     School.all.order(created_at: :desc)
   end
+
+  def teacher_count
+    list_teachers_by_school_id.count
+  end
 end
