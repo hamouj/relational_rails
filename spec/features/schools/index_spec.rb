@@ -25,4 +25,10 @@ describe 'the school index page', type: :feature do
 
     expect(page).to have_link('All Teachers', href: "/teachers")
   end
+
+  it "has a link to '/students' page" do
+    visit "/schools/"
+
+    expect(page).to have_link('All Schools', href: "/schools")
+  end
 end
