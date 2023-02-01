@@ -1,4 +1,4 @@
-<h1><%= @school.name %></h1>
+<h1><%= @school.name %> Teachers</h1>
 <%@school_teachers.each do |teacher|%>
   <h3><%= teacher.name %></h3>
   <p>Years at <%= teacher.school.name %>: <%= teacher.years_at_school %></p>

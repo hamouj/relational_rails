@@ -38,4 +38,10 @@ describe 'the schools show page', type: :feature do
 
     expect(page).to have_link('All Schools', href: "/schools")
   end
+
+  it "has a link to that school's teachers page" do
+    visit "/schools/#{@school.id}"
+
+    expect(page).to have_link("#{@school.name}", href: "/schools/#{@school.id}/teachers")
+  end
 end

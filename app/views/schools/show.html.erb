@@ -1,6 +1,6 @@
-<h1><%= @schools.name %></h1>
-<p>Year they opened: <%= @schools.open_year %></p>
-<p>Are they fully staffed? <%= @schools.fully_staffed %></p>
+<h1><a href="/schools/<%= @school.id %>/teachers"><%= @school.name %></a></h1>
+<p>Year they opened: <%= @school.open_year %></p>
+<p>Are they fully staffed? <%= @school.fully_staffed %></p>
 <p>Number of teachers: <%= @count %></p>
-<p>Created at <%= @schools.created_at %></p>
-<p>Updated at <%= @schools.updated_at %></p>
+<p>Created at <%= @school.created_at %></p>
+<p>Updated at <%= @school.updated_at %></p>
