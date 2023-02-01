@@ -8,7 +8,7 @@ class SchoolsController < ApplicationController
   end
 
   def show_teachers
-    @schools = School.find(params[:id])
-    @schools.show_teachers
+    @school = School.find(params[:id])
+    @school_teachers = @school.list_teachers_by_school_id
   end
 end
