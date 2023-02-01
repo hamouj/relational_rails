@@ -1,5 +1,5 @@
 <h1>All Schools</h1>
 
 <% @schools.each do |school| %>
-  <h3><a href="/schools/<%= school.id%>"><%= school.name%></a></h3>
+  <h3><a href="/schools/<%= school.id%>"><%= school.name%></a> Created at: <%= school.created_at %></h3>
 <% end %>
