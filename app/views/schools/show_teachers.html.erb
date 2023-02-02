@@ -1,5 +1,5 @@
 <h1><%= @school.name %> Teachers</h1>
-<%@school_teachers.each do |teacher|%>
+<%@school.teachers.each do |teacher|%>
   <h3><%= teacher.name %></h3>
   <p>Years at <%= teacher.school.name %>: <%= teacher.years_at_school %></p>
   <p>Bilingual? <%= teacher.bilingual %></p>

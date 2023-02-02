@@ -10,6 +10,5 @@ class SchoolsController < ApplicationController
 
   def show_teachers
     @school = School.find(params[:id])
-    @school_teachers = @school.list_teachers_by_school_id
   end
 end

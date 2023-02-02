@@ -18,6 +18,7 @@ describe 'the school index page', type: :feature do
 
     expect(page).to have_content("Created at: #{@school.created_at}")
     expect(page).to have_content("Created at: #{@school2.created_at}")
+    expect(@school2.name).to appear_before(@school.name)
   end
 
   it "has a link to '/teachers' page" do 
