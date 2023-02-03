@@ -31,17 +31,29 @@ describe 'the schools show page', type: :feature do
     visit "/schools/#{@school.id}"
 
     expect(page).to have_link('All Teachers', href: "/teachers")
+
+    click_on 'All Teachers'
+    
+    expect(current_path).to eq("/teachers")
   end
 
   it "has a link to '/students' page" do
     visit "/schools/#{@school.id}"
 
     expect(page).to have_link('All Schools', href: "/schools")
+    
+    click_on 'All Schools'
+
+    expect(current_path).to eq("/schools")
   end
 
   it "has a link to that school's teachers page" do
     visit "/schools/#{@school.id}"
 
     expect(page).to have_link("#{@school.name}", href: "/schools/#{@school.id}/teachers")
+
+    click_on "#{@school.name}"
+
+    expect(current_path).to eq("/schools/#{@school.id}/teachers")
   end
 end

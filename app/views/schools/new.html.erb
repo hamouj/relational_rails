@@ -1,0 +1,14 @@
+<%= form_with url: '/schools', method: :post, local: true do |form| %>
+  <%= form.label :name, "School name:" %>
+  <%= form.text_field :name %>
+  <%= form.label :open_year, "Year it opened:" %>
+  <%= form.number_field :open_year, within: 1000...9999 %>
+  <%= form.label :fully_staffed, "Are they fully staffed?" %>
+  <%= form.radio_button :fully_staffed, "true" %>
+  <%= form.label :fully_staffed_true, "True" %>
+  <%= form.radio_button :fully_staffed, "false" %> 
+  <%= form.label :fully_staffed_false, "False" %>
+  <%= form.submit "Create School" %>
+<% end %>
+
+

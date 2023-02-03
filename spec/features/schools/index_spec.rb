@@ -22,14 +22,32 @@ describe 'the school index page', type: :feature do
   end
 
   it "has a link to '/teachers' page" do 
-    visit "/schools/"
+    visit "/schools"
 
     expect(page).to have_link('All Teachers', href: "/teachers")
+
+    click_on 'All Teachers'
+    
+    expect(current_path).to eq("/teachers")
   end
 
   it "has a link to '/students' page" do
-    visit "/schools/"
+    visit "/schools"
 
     expect(page).to have_link('All Schools', href: "/schools")
+    
+    click_on 'All Schools'
+
+    expect(current_path).to eq("/schools")
+  end
+
+  it 'has a link to create a new School record' do
+    visit '/schools'
+
+    expect(page).to have_link("New School", href: "/schools/new")
+
+    click_on "New School"
+
+    expect(current_path).to eq("/schools/new")
   end
 end
