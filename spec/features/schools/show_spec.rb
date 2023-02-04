@@ -56,4 +56,14 @@ describe 'the schools show page', type: :feature do
 
     expect(current_path).to eq("/schools/#{@school.id}/teachers")
   end
+
+  it "has a link to update the school" do
+    visit "/schools/#{@school.id}"
+
+    expect(page).to have_link("Update School", href: "/schools/#{@school.id}/edit")
+
+    click_on "Update School"
+
+    expect(current_path).to eq("/schools/#{@school.id}/edit")
+  end
 end

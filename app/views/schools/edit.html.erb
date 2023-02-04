@@ -1,11 +1,11 @@
-<%= form_with url: '/schools', method: :post, local: true do |form| %>
+<%= form_with url: "/schools/#{@school.id}", method: "patch", local: true do |form|%>
   <br>
   <%= form.label :name, "School name:" %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, value: @school.name %>
   <br>
   <br>
   <%= form.label :open_year, "Year it opened:" %>
-  <%= form.number_field :open_year, within: 1000...9999 %>
+  <%= form.number_field :open_year, within: 1000...9999, value: @school.open_year %>
   <br>
   <br>
   <%= form.label :fully_staffed, "Are they fully staffed?" %>
@@ -15,7 +15,5 @@
   <%= form.label :fully_staffed_false, "False" %>
   <br>
   <br>
-  <%= form.submit "Create School" %>
+  <%= form.submit "Update" %>
 <% end %>
-
-
