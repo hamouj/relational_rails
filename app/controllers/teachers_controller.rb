@@ -1,6 +1,6 @@
 class TeachersController < ApplicationController
   def index
-    @teachers = Teacher.all
+    @teachers = Teacher.show_bilingual_teachers
   end
 
   def show

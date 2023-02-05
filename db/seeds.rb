@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
-@school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+@school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.new(2004, 2, 3, 4, 5, 6), updated_at: DateTime.now)
+@school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.new(2010, 1, 4, 7, 8, 3), updated_at: DateTime.now)
 @school3 = School.create!(name: 'Detwiler', open_year: 2001, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
 @school4 = School.create!(name: 'Ortwein', open_year: 2019, fully_staffed: true, created_at: DateTime.now, updated_at: DateTime.now)
 
@@ -21,3 +21,5 @@
 @teacher8 = @school.teachers.create!(name: 'Mrs. Yachbes', years_at_school: 5, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
 @teacher9 = @school3.teachers.create!(name: 'Mrs. Stepke', years_at_school: 13, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
 @teacher10 = @school4.teachers.create!(name: 'Mrs. Kay', years_at_school: 3, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
+@teacher11 = @school.teachers.create!(name: 'Mr. Marchant', years_at_school: 9, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
+@teacher12 = @school2.teachers.create!(name: 'Mr. Liles', years_at_school: 4, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
