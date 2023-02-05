@@ -1,6 +1,7 @@
-<h1><%= @teachers.name %></h1>
-<p>Works at <%= @teachers.school.name %></p>
-<p>Years at <%= @teachers.school.name %>: <%= @teachers.years_at_school %></p>
-<p>Bilingual? <%= @teachers.bilingual %></p>
-<p>Created at <%= @teachers.created_at %></p>
-<p>Updated at <%= @teachers.updated_at %></p>
+<h1><%= @teacher.name %></h1>
+<p>Works at <%= @teacher.school.name %></p>
+<p>Years at <%= @teacher.school.name %>: <%= @teacher.years_at_school %></p>
+<p>Bilingual? <%= @teacher.bilingual %></p>
+<p>Created at <%= @teacher.created_at %></p>
+<p>Updated at <%= @teacher.updated_at %></p>
+<a href="/teachers/<%= @teacher.id %>/edit">Update Teacher</a>

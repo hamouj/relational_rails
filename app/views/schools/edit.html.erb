@@ -9,7 +9,7 @@
   <br>
   <br>
   <%= form.label :fully_staffed, "Are they fully staffed?" %>
-  <%= form.radio_button :fully_staffed, "true" %>
+  <%= form.radio_button :fully_staffed, "true", value: @school.fully_staffed %>
   <%= form.label :fully_staffed_true, "True" %>
   <%= form.radio_button :fully_staffed, "false" %> 
   <%= form.label :fully_staffed_false, "False" %>

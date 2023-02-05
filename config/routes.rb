@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   get '/teachers', to: 'teachers#index'
   get '/teachers/:id', to: 'teachers#show'
+  get '/teachers/:id/edit', to: 'teachers#edit'
+  patch '/teachers/:id', to: 'teachers#update'
 end

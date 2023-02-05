@@ -5,6 +5,13 @@ describe "the schools edit page", type: :feature do
     @school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.new(2001, 2, 3, 4, 5, 6), updated_at: DateTime.now)
     @school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.new(2010, 1, 4, 7, 8, 3), updated_at: DateTime.now)
   end
+
+  it 'links to the edit page from the school show page' do
+    visit "/schools/#{@school.id}"
+    click_link "Update School"
+
+    expect(current_path).to eq("/schools/#{@school.id}/edit")
+  end
   
   it 'can edit the school' do
     visit "/schools/#{@school.id}"
