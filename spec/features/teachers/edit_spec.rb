@@ -17,6 +17,14 @@ describe 'teachers edit page', type: :feature do
     expect(current_path).to eq("/teachers/#{@teacher.id}/edit")
   end
 
+  it 'links to the edit page from the teacher index page' do
+    visit "/teachers"
+
+    click_link "Update #{@teacher2.name}"
+
+    expect(current_path).to eq("/teachers/#{@teacher2.id}/edit")
+  end
+
   it 'can edit the teacher' do
     visit "/teachers/#{@teacher.id}"
 
