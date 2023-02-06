@@ -8,4 +8,8 @@ class School < ApplicationRecord
   def teacher_count
     self.teachers.count
   end
+
+  def sort_teachers_alphabetically
+    self.teachers.order(:name)
+  end
 end

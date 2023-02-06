@@ -45,4 +45,13 @@ describe 'school teachers index', type: :feature do
 
     expect(current_path).to eq("/schools")
   end
+
+  it 'has a link to alphabetize teachers by name' do
+    visit "/schools/#{@school.id}/teachers"
+
+    expect(page).to have_link('Sort Teachers Alphabetically', href: "/schools/#{@school.id}/teachers?sort=alpha")
+    click_on 'Sort Teachers Alphabetically'
+
+    expect(@teacher2.name).to appear_before(@teacher.name)
+  end
 end
