@@ -24,7 +24,7 @@ describe 'the school index page', type: :feature do
   it "has a link to '/teachers' page" do 
     visit "/schools"
 
-    expect(page).to have_link('All Teachers', href: "/teachers")
+    expect(page).to have_link('All Teachers')
 
     click_on 'All Teachers'
     
@@ -34,7 +34,7 @@ describe 'the school index page', type: :feature do
   it "has a link to '/students' page" do
     visit "/schools"
 
-    expect(page).to have_link('All Schools', href: "/schools")
+    expect(page).to have_link('All Schools')
     
     click_on 'All Schools'
 
@@ -44,7 +44,7 @@ describe 'the school index page', type: :feature do
   it 'has a link to create a new School record' do
     visit '/schools'
 
-    expect(page).to have_link("New School", href: "/schools/new")
+    expect(page).to have_link("New School")
 
     click_on "New School"
 

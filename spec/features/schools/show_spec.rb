@@ -30,7 +30,7 @@ describe 'the schools show page', type: :feature do
   it "has a link to '/teachers' page" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link('All Teachers', href: "/teachers")
+    expect(page).to have_link('All Teachers')
 
     click_on 'All Teachers'
     
@@ -40,7 +40,7 @@ describe 'the schools show page', type: :feature do
   it "has a link to '/students' page" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link('All Schools', href: "/schools")
+    expect(page).to have_link('All Schools')
     
     click_on 'All Schools'
 
@@ -50,7 +50,7 @@ describe 'the schools show page', type: :feature do
   it "has a link to that school's teachers page" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link("#{@school.name}", href: "/schools/#{@school.id}/teachers")
+    expect(page).to have_link("#{@school.name}")
 
     click_on "#{@school.name}"
 
@@ -60,7 +60,7 @@ describe 'the schools show page', type: :feature do
   it "has a link to update the school" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link("Update School", href: "/schools/#{@school.id}/edit")
+    expect(page).to have_link("Update School")
 
     click_on "Update School"
 

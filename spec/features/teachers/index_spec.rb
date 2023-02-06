@@ -12,7 +12,7 @@ describe 'the teachers index page', type: :feature do
   it "has a link to '/teachers' page" do 
     visit "/teachers"
 
-    expect(page).to have_link('All Teachers', href: "/teachers")
+    expect(page).to have_link('All Teachers')
 
     click_on 'All Teachers'
     
@@ -22,7 +22,7 @@ describe 'the teachers index page', type: :feature do
   it "has a link to '/students' page" do
     visit "/teachers"
 
-    expect(page).to have_link('All Schools', href: "/schools")
+    expect(page).to have_link('All Schools')
 
     click_on 'All Schools'
 
@@ -56,5 +56,9 @@ describe 'the teachers index page', type: :feature do
 
     expect(page).to have_link("Update #{@teacher2.name}")
     expect(page).to have_link("Update #{teacher3.name}")
+
+    click_link ("Update #{teacher3.name}")
+
+    expect(current_path).to eq("/teachers/#{teacher3.id}/edit")
   end
 end
