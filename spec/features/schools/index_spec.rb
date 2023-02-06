@@ -50,4 +50,11 @@ describe 'the school index page', type: :feature do
 
     expect(current_path).to eq("/schools/new")
   end
+
+  it 'has a link to edit each school' do
+    visit '/schools'
+
+    expect(page).to have_link "Update #{@school.name}"
+    expect(page).to have_link "Update #{@school2.name}"
+  end
 end
