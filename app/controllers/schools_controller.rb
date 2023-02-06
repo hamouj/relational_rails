@@ -14,6 +14,7 @@ class SchoolsController < ApplicationController
   def create
     school = School.create!(school_params)
     school.save
+
     redirect_to "/schools/#{school.id}"
   end
 
@@ -24,7 +25,15 @@ class SchoolsController < ApplicationController
   def update
     @school = School.find(params[:id])
     @school.update(school_params)
+
     redirect_to "/schools/#{@school.id}"
+  end
+
+  def destroy
+    school = School.find(params[:id])
+    school.destroy
+
+    redirect_to '/schools'
   end
 
 private 

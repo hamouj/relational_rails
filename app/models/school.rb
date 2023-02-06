@@ -1,5 +1,5 @@
 class School < ApplicationRecord
-  has_many :teachers
+  has_many :teachers, :dependent => :destroy
 
   def self.order_schools
     order(created_at: :desc)

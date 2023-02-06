@@ -1,6 +1,10 @@
 class TeachersController < ApplicationController
   def index
-    @teachers = Teacher.show_bilingual_teachers
+    if params[:filter] == "bilingual"
+      @teachers = Teacher.show_bilingual_teachers
+    else
+      @teachers = Teacher.all
+    end
   end
 
   def show
