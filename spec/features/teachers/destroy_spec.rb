@@ -10,12 +10,34 @@ describe 'destroying a teacher', type: :feature do
     @teacher3 = @school2.teachers.create!(name: 'Mrs. Hall', years_at_school: 15, bilingual: true, created_at: DateTime.now, updated_at: DateTime.now)
   end
 
-  it 'has a link to delete the teacher on the teacher show page then redirects to the teacher index page' do
+  it 'has a link to delete the teacher on the teacher show page then deletes the teacher and redirects to the teacher index page' do
     visit "/teachers/#{@teacher.id}"
 
-    expect(page).to have_link ("Delete Teacher")
+    expect(page).to have_link("Delete Teacher")
     
     click_link "Delete Teacher"
+
+    expect(current_path).to eq("/teachers")
+    expect(page).to_not have_content("#{@teacher.name}")
+  end
+
+  it 'has a link to delete the teacher on the teacher index page' do
+    visit "/teachers"
+
+    expect(page).to have_link("Delete #{@teacher.name}")
+    
+    click_link "Delete #{@teacher.name}"
+
+    expect(current_path).to eq("/teachers")
+    expect(page).to_not have_content("#{@teacher.name}")
+  end
+
+  it 'has a link to delete the teacher on the school teacher index page' do
+    visit "/schools/#{@school.id}/teachers"
+
+    expect(page).to have_link("Delete #{@teacher.name}")
+    
+    click_link "Delete #{@teacher.name}"
 
     expect(current_path).to eq("/teachers")
     expect(page).to_not have_content("#{@teacher.name}")

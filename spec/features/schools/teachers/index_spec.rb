@@ -65,4 +65,11 @@ describe 'school teachers index', type: :feature do
     expect(page).to have_content(@teacher2.name)
     expect(page).to_not have_content(@teacher.name)
   end
+
+  it "has a link to delete each teacher" do
+    visit "/schools/#{@school.id}/teachers"
+
+    expect(page).to have_link("Delete #{@teacher.name}")
+    expect(page).to have_link("Delete #{@teacher2.name}")
+  end
 end

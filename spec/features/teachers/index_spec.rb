@@ -82,4 +82,11 @@ describe 'the teachers index page', type: :feature do
 
     expect(current_path).to eq("/teachers/#{teacher3.id}/edit")
   end
+
+  it 'has a link to delete each teacher' do
+    visit "/teachers"
+    
+    expect(page).to have_link("Delete #{@teacher.name}")
+    expect(page).to have_link("Delete #{@teacher2.name}")
+  end
 end
