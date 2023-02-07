@@ -2,10 +2,14 @@ class School < ApplicationRecord
   has_many :teachers
 
   def self.order_schools
-    School.all.order(created_at: :desc)
+    order(created_at: :desc)
   end
 
   def teacher_count
     self.teachers.count
+  end
+
+  def sort_teachers_alphabetically
+    self.teachers.order(:name)
   end
 end

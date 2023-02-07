@@ -29,12 +29,30 @@ describe 'school teachers index', type: :feature do
   it "has a link to '/teachers' page" do
     visit "/schools/#{@school.id}/teachers"
 
-    expect(page).to have_link('All Teachers', href: "/teachers")
+    expect(page).to have_link('All Teachers')
+    
+    click_on 'All Teachers'
+    
+    expect(current_path).to eq("/teachers")
   end
 
   it "has a link to '/students' page" do
     visit "/schools/#{@school.id}/teachers"
 
-    expect(page).to have_link('All Schools', href: "/schools")
+    expect(page).to have_link('All Schools')
+
+    click_on 'All Schools'
+
+    expect(current_path).to eq("/schools")
+  end
+
+  it 'has a link to alphabetize teachers by name' do
+    visit "/schools/#{@school.id}/teachers"
+
+    expect(page).to have_link('Sort Teachers Alphabetically', href: "/schools/#{@school.id}/teachers?sort=alpha")
+    click_on 'Sort Teachers Alphabetically'
+
+    expect(@teacher2.name).to appear_before(@teacher.name)
+    expect(current_path).to eq("/schools/#{@school.id}/teachers")
   end
 end

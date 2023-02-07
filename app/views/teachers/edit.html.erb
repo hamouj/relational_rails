@@ -1,0 +1,20 @@
+<%= form_with url: "/teachers/#{@teacher.id}", method: "patch", local: true do |form| %>
+  <br>
+  <%= form.label :name, "Teacher name:"  %>
+  <%= form.text_field :name, value: @teacher.name %>
+  <br>
+  <br>
+  <%= form.label :years_at_school, "How many years have they worked at the shcool?" %>
+  <%= form.number_field :years_at_school, within: 0...50, value: @teacher.years_at_school %>
+  <br>
+  <br>
+  <%= form.label :bilingual, "Do they speak another language?" %>
+  <%= form.radio_button :bilingual, "true", value: @teacher.bilingual %>
+  <%= form.label :bilingual_true, "Yes" %>
+  <%= form.radio_button :bilingual, "false" %>
+  <%= form.label :bilingual_false, "No" %>
+  <br>
+  <br>
+  <%= form.hidden_field :school_id, value: @teacher.school_id %>
+  <%= form.submit "Update" %>
+<% end %>

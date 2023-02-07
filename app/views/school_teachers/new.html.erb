@@ -1,0 +1,20 @@
+<%= form_with url: "/schools/#{@school.id}/teachers", method: :post, local: true do |form| %>
+  <br>
+  <%= form.label :name, "Teacher name:"  %>
+  <%= form.text_field :name %>
+  <br>
+  <br>
+  <%= form.label :years_at_school, "How many years have they worked at the shcool?" %>
+  <%= form.number_field :years_at_school, within: 0...50 %>
+  <br>
+  <br>
+  <%= form.label :bilingual, "Do they speak another language?" %>
+  <%= form.radio_button :bilingual, "true" %>
+  <%= form.label :bilingual_true, "Yes" %>
+  <%= form.radio_button :bilingual, "false" %>
+  <%= form.label :bilingual_false, "No" %>
+  <br>
+  <br>
+  <%= form.hidden_field :school_id, value: @school.id %>
+  <%= form.submit "Create Teacher" %>
+<% end %>

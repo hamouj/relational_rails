@@ -30,18 +30,40 @@ describe 'the schools show page', type: :feature do
   it "has a link to '/teachers' page" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link('All Teachers', href: "/teachers")
+    expect(page).to have_link('All Teachers')
+
+    click_on 'All Teachers'
+    
+    expect(current_path).to eq("/teachers")
   end
 
   it "has a link to '/students' page" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link('All Schools', href: "/schools")
+    expect(page).to have_link('All Schools')
+    
+    click_on 'All Schools'
+
+    expect(current_path).to eq("/schools")
   end
 
   it "has a link to that school's teachers page" do
     visit "/schools/#{@school.id}"
 
-    expect(page).to have_link("#{@school.name}", href: "/schools/#{@school.id}/teachers")
+    expect(page).to have_link("#{@school.name}")
+
+    click_on "#{@school.name}"
+
+    expect(current_path).to eq("/schools/#{@school.id}/teachers")
+  end
+
+  it "has a link to update the school" do
+    visit "/schools/#{@school.id}"
+
+    expect(page).to have_link("Update School")
+
+    click_on "Update School"
+
+    expect(current_path).to eq("/schools/#{@school.id}/edit")
   end
 end
