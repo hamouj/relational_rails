@@ -46,7 +46,7 @@ describe 'school teachers index', type: :feature do
     expect(current_path).to eq("/schools")
   end
 
-  it 'has a link to alphabetize teachers by name' do
+  it "has a link to alphabetize teachers by name" do
     visit "/schools/#{@school.id}/teachers"
 
     expect(page).to have_link('Sort Teachers Alphabetically', href: "/schools/#{@school.id}/teachers?sort=alpha")
@@ -54,5 +54,22 @@ describe 'school teachers index', type: :feature do
 
     expect(@teacher2.name).to appear_before(@teacher.name)
     expect(current_path).to eq("/schools/#{@school.id}/teachers")
+  end
+
+  it "has a form that takes in a number input" do
+    visit "/schools/#{@school.id}/teachers"
+
+    fill_in(:years, with: 8)
+    click_button "Submit"
+
+    expect(page).to have_content(@teacher2.name)
+    expect(page).to_not have_content(@teacher.name)
+  end
+
+  it "has a link to delete each teacher" do
+    visit "/schools/#{@school.id}/teachers"
+
+    expect(page).to have_link("Delete #{@teacher.name}")
+    expect(page).to have_link("Delete #{@teacher2.name}")
   end
 end

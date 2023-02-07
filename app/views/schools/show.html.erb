@@ -5,3 +5,4 @@
 <p>Created at <%= @school.created_at %></p>
 <p>Updated at <%= @school.updated_at %></p>
 <h3><a href="/schools/<%= @school.id %>/edit">Update School</a></h3>
+<h3><%= link_to "Delete School", "/schools/#{@school.id}", method: :delete %></h3>

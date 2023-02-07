@@ -1,5 +1,5 @@
 class School < ApplicationRecord
-  has_many :teachers
+  has_many :teachers, :dependent => :destroy
 
   def self.order_schools
     order(created_at: :desc)
@@ -11,5 +11,9 @@ class School < ApplicationRecord
 
   def sort_teachers_alphabetically
     self.teachers.order(:name)
+  end
+
+  def filter_by_years_at_school(number)
+    self.teachers.where('years_at_school > ?', number)
   end
 end

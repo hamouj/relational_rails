@@ -6,6 +6,11 @@
   <p>Years at <%= teacher.school.name %>: <%= teacher.years_at_school %></p>
   <p>Bilingual? <%= teacher.bilingual %></p>
   <p>Created at <%= teacher.created_at %></p>
-  <p>Updated at <%= teacher.updated_at %></p> 
+  <p>Updated at <%= teacher.updated_at %></p>
+  <br> 
   <a href="/teachers/<%=teacher.id%>/edit">Update <%= teacher.name %></a>
+  <%= link_to "Delete #{teacher.name}", "/teachers/#{teacher.id}", method: :delete %>
 <%end%>
+<br>
+<br>
+<h3><a href="/teachers?filter=bilingual">Show Bilingual Teachers</a></h3>

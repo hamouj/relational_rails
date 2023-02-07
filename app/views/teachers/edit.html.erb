@@ -9,9 +9,9 @@
   <br>
   <br>
   <%= form.label :bilingual, "Do they speak another language?" %>
-  <%= form.radio_button :bilingual, "true", value: @teacher.bilingual %>
+  <%= form.radio_button :bilingual, "true", checked: @teacher.bilingual %>
   <%= form.label :bilingual_true, "Yes" %>
-  <%= form.radio_button :bilingual, "false" %>
+  <%= form.radio_button :bilingual, "false", checked: !@teacher.bilingual %>
   <%= form.label :bilingual_false, "No" %>
   <br>
   <br>

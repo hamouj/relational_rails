@@ -4,4 +4,7 @@
 <p>Bilingual? <%= @teacher.bilingual %></p>
 <p>Created at <%= @teacher.created_at %></p>
 <p>Updated at <%= @teacher.updated_at %></p>
-<a href="/teachers/<%= @teacher.id %>/edit">Update Teacher</a>
+<br>
+<br>
+<h3><a href="/teachers/<%= @teacher.id %>/edit">Update Teacher</a></h3>
+<h3><%= link_to "Delete Teacher", "/teachers/#{@teacher.id}", method: :delete %></h3>

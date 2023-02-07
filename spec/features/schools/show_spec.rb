@@ -66,4 +66,10 @@ describe 'the schools show page', type: :feature do
 
     expect(current_path).to eq("/schools/#{@school.id}/edit")
   end
+
+  it "has a link to delete the school" do
+    visit "/schools/#{@school.id}"
+
+    expect(page).to have_link("Delete School", href: "/schools/#{@school.id}")
+  end
 end
