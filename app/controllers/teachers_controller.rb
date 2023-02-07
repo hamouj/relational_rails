@@ -2,8 +2,10 @@ class TeachersController < ApplicationController
   def index
     if params[:filter]
       @teachers = Teacher.show_bilingual_teachers
+    elsif Teacher.list_names.include?(params[:keyword])
+      @teachers = Teacher.filter_by_keyword_exact(params[:keyword])
     elsif params[:keyword]
-      @teachers = Teacher.filter_by_keyword(params[:keyword])
+      @teachers = Teacher.filter_by_keyword_partial(params[:keyword])
     else
       @teachers = Teacher.all
     end

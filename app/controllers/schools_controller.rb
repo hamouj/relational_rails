@@ -1,7 +1,9 @@
 class SchoolsController < ApplicationController
   def index
-    if params[:keyword]
-      @schools = School.filter_by_keyword(params[:keyword])
+    if School.list_names.include?(params[:keyword])
+      @schools = School.filter_by_keyword_exact(params[:keyword])
+    elsif params[:keyword]
+      @schools = School.filter_by_keyword_partial(params[:keyword])
     else
       @schools = School.order_schools
     end

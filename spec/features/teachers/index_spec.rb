@@ -90,7 +90,22 @@ describe 'the teachers index page', type: :feature do
     expect(page).to have_link("Delete #{@teacher2.name}")
   end
 
-  it 'has a form to search by name (partial or exact match)' do
+  it 'has a form to search by name (exact match)' do
+    visit '/teachers'
+
+    fill_in('keyword', with: 'Mrs. Vicario')
+    click_on "Search"
+
+    expect(page).to have_content(@teacher.name)
+    expect(page).to_not have_content(@teacher2.name)
+    expect(page).to have_content("Works at #{@teacher.school.name}")  
+    expect(page).to have_content("Years at #{@teacher.school.name}: #{@teacher.years_at_school}")
+    expect(page).to have_content("Bilingual? #{@teacher.bilingual?}")
+    expect(page).to have_content("Created at #{@teacher.created_at}")
+    expect(page).to have_content("Updated at #{@teacher.updated_at}")
+  end
+
+  it 'has a form to search by name (partial match)' do
     visit '/teachers'
 
     fill_in('keyword', with: 'car')

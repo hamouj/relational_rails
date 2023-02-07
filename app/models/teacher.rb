@@ -1,11 +1,10 @@
+require './lib/modules/filterable'
+
 class Teacher < ApplicationRecord
   belongs_to :school
+  extend Filterable
 
   def self.show_bilingual_teachers
     where(bilingual: true)
-  end
-
-  def self.filter_by_keyword(keyword)
-    where("name LIKE ?", "%#{keyword}%")
   end
 end

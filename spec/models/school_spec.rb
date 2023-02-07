@@ -58,15 +58,34 @@ describe School, type: :model do
     end
   end
 
-  describe '::filter.by.keyword()' do
-    it 'returns a specific school if the keyword is an exact or partial match to a school name' do
+  describe '::filter_by_keyword_exact()' do
+    it 'returns a specific school if the keyword is an exact match to a school name' do
       school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
       school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
       school3 = School.create!(name: 'Friar', open_year: 2020, fully_staffed: true, created_at: DateTime.now, updated_at: DateTime.now)
 
-      expect(School.filter_by_keyword('Frias')).to eq([school])
-      expect(School.filter_by_keyword('frias')).to eq([])
-      expect(School.filter_by_keyword('Fr')).to eq([school, school3])
+      expect(School.filter_by_keyword_exact('Frias')).to eq([school])
+      expect(School.filter_by_keyword_exact('frias')).to eq([])
+    end
+  end
+
+  describe '::filter_by_keyword_partial()' do
+    it 'returns specific school(s) if they keyword is a partial match to a school name ' do
+      school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+      school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+      school3 = School.create!(name: 'Friar', open_year: 2020, fully_staffed: true, created_at: DateTime.now, updated_at: DateTime.now)
+
+      expect(School.filter_by_keyword_partial('Fr')).to eq([school, school3])
+    end
+  end
+
+  describe '::list_names' do
+    it 'returns a list of school names' do
+      school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+      school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+      school3 = School.create!(name: 'Friar', open_year: 2020, fully_staffed: true, created_at: DateTime.now, updated_at: DateTime.now)
+
+      expect(School.list_names).to eq(["Frias", "Robison", "Friar"])
     end
   end
 end

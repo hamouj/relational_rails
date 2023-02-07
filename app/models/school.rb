@@ -1,5 +1,8 @@
+require './lib/modules/filterable'
+
 class School < ApplicationRecord
   has_many :teachers, :dependent => :destroy
+  extend Filterable
 
   def self.order_schools
     order(created_at: :desc)
@@ -15,9 +18,5 @@ class School < ApplicationRecord
 
   def filter_by_years_at_school(number)
     self.teachers.where('years_at_school > ?', number)
-  end
-
-  def self.filter_by_keyword(keyword)
-    where("name LIKE ?", "%#{keyword}%")
   end
 end
