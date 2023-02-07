@@ -16,4 +16,8 @@ class School < ApplicationRecord
   def filter_by_years_at_school(number)
     self.teachers.where('years_at_school > ?', number)
   end
+
+  def self.filter_by_keyword(keyword)
+    where('name = ?', keyword)
+  end
 end

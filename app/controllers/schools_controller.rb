@@ -1,6 +1,10 @@
 class SchoolsController < ApplicationController
   def index
-    @schools = School.order_schools
+    if params[:keyword]
+      @schools = School.filter_by_keyword(params[:keyword])
+    else
+      @schools = School.order_schools
+    end
   end
 
   def show

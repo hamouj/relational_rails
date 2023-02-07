@@ -64,4 +64,14 @@ describe 'the school index page', type: :feature do
     expect(page).to have_link "Delete #{@school.name}"
     expect(page).to have_link "Delete #{@school2.name}"
   end
+
+  it 'has a form to search by name (exact match)' do
+    visit '/schools'
+
+    fill_in('keyword', with: 'Frias')
+    click_on "Search"
+
+    expect(page).to have_content(@school.name)
+    expect(page).to_not have_content(@school2.name)
+  end
 end
