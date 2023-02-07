@@ -21,7 +21,7 @@ class SchoolsController < ApplicationController
     school = School.create!(school_params)
     school.save
 
-    redirect_to "/schools/#{school.id}"
+    redirect_to "/schools"
   end
 
   def edit

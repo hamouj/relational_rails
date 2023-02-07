@@ -5,7 +5,8 @@
   <p>Bilingual? <%= teacher.bilingual %></p>
   <p>Created at <%= teacher.created_at %></p>
   <p>Updated at <%= teacher.updated_at %></p>
-  <p><%= link_to "Delete #{teacher.name}", "/teachers/#{teacher.id}", method: :delete %><p>
+  <%= link_to "Update #{teacher.name}", "/teachers/#{teacher.id}/edit", method: :get%>
+  <%= link_to "Delete #{teacher.name}", "/teachers/#{teacher.id}", method: :delete %>
 <% end %>
 <br>
 <br>

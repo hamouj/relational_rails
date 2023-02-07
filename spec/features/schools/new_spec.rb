@@ -13,7 +13,7 @@ describe "schools new page", type: :feature do
     expect(current_path).to eq('/schools/new')
   end
 
-  it 'can create a new school with school attributes' do
+  it 'can create a new school' do
     visit "/schools/new"
 
     fill_in('name', with: 'Detwiler')
@@ -21,10 +21,7 @@ describe "schools new page", type: :feature do
     choose 'fully_staffed_false'
     click_button('Create School')
 
-    new_school_id = School.last.id
-    expect(current_path).to eq("/schools/#{new_school_id}")
+    expect(current_path).to eq("/schools")
     expect(page).to have_content("Detwiler")  
-    expect(page).to have_content("Year they opened: 1956")
-    expect(page).to have_content("Are they fully staffed? false")
   end
 end
