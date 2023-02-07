@@ -1,9 +1,10 @@
 <h1>All Schools</h1>
 
 <% @schools.each do |school| %>
-  <h3><a href="/schools/<%= school.id%>"><%= school.name%></a></h3>
+  <h2><a href="/schools/<%= school.id%>"><%= school.name%></a></h3>
   <p>Created at: <%= school.created_at %></p>
-  <a href="/schools/<%= school.id %>/edit">Update <%= school.name %></a>
+  <h3><a href="/schools/<%= school.id %>/edit">Update <%= school.name %></a></h3>
+  <h3><%= link_to "Delete #{school.name}", "/schools/#{school.id}", method: :delete %></h3>
 <% end %>
 <br>
 <br>

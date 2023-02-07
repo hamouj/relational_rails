@@ -57,4 +57,11 @@ describe 'the school index page', type: :feature do
     expect(page).to have_link "Update #{@school.name}"
     expect(page).to have_link "Update #{@school2.name}"
   end
+
+  it 'has a link to delete each school' do
+    visit '/schools'
+
+    expect(page).to have_link "Delete #{@school.name}"
+    expect(page).to have_link "Delete #{@school2.name}"
+  end
 end

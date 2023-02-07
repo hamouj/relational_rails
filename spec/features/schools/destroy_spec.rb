@@ -20,6 +20,22 @@ describe 'destroying a school', type: :feature do
     expect(current_path).to eq("/schools")
   end
 
+  it "has a link to delete the school on the index page which destroys the school record and associated teachers, then redirects to the school index page" do
+    visit "/schools"
+
+    expect(page).to have_link("Delete #{@school.name}")
+
+    click_link "Delete #{@school.name}"
+
+    expect(current_path).to eq("/schools")
+    expect(page).to_not have_content("#{@school.name}")
+
+    click_link "All Teachers"
+
+    expect(page).to_not have_content("#{@teacher.name}")
+    expect(page).to_not have_content("#{@teacher2.name}")
+  end
+
   it "destroys the school record and associated teachers, then redirects to the school index page" do
     visit "/schools/#{@school.id}"
 
