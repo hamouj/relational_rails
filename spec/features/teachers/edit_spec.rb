@@ -25,6 +25,14 @@ describe 'teachers edit page', type: :feature do
     expect(current_path).to eq("/teachers/#{@teacher2.id}/edit")
   end
 
+  it 'links to the edit page from the school-teacher index page' do
+    visit "/schools/#{@school.id}/teachers"
+
+    click_link "Update #{@teacher.name}"
+
+    expect(current_path).to eq("/teachers/#{@teacher.id}/edit")
+  end
+
   it 'can edit the teacher' do
     visit "/teachers/#{@teacher.id}"
 
@@ -33,7 +41,7 @@ describe 'teachers edit page', type: :feature do
     click_link "Update Teacher"
 
     choose 'bilingual_true'
-    click_button 'Update'
+    click_button 'Update Teacher'
 
     expect(current_path).to eq("/teachers/#{@teacher.id}")
     expect(page).to have_content("Mrs.Vicario")

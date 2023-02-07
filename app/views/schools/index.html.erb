@@ -7,5 +7,10 @@
   <h3><%= link_to "Delete #{school.name}", "/schools/#{school.id}", method: :delete %></h3>
 <% end %>
 <br>
-<br>
- <h3><a href="/schools/new">New School</a></h3>
+ <h2><a href="/schools/new">New School</a></h2>
+ <h3><%= form_with url: "/schools", method: "get", local: true do |form| %>
+  <%= form.label :keyword, "Type the name of the school you want to search for" %>
+  <%= form.search_field :keyword %> 
+  <br>
+  <%= form.submit "Search" %>
+<% end %></h3>

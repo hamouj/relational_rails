@@ -1,5 +1,8 @@
+require './lib/modules/filterable'
+
 class School < ApplicationRecord
   has_many :teachers, :dependent => :destroy
+  extend Filterable
 
   def self.order_schools
     order(created_at: :desc)
