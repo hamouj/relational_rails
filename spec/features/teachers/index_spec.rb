@@ -90,10 +90,10 @@ describe 'the teachers index page', type: :feature do
     expect(page).to have_link("Delete #{@teacher2.name}")
   end
 
-  it 'has a form to search by name (exact match)' do
+  it 'has a form to search by name (partial or exact match)' do
     visit '/teachers'
 
-    fill_in('keyword', with: 'Mrs. Vicario')
+    fill_in('keyword', with: 'car')
     click_on "Search"
 
     expect(page).to have_content(@teacher.name)

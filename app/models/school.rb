@@ -18,6 +18,6 @@ class School < ApplicationRecord
   end
 
   def self.filter_by_keyword(keyword)
-    where('name = ?', keyword)
+    where("name LIKE ?", "%#{keyword}%")
   end
 end
