@@ -1,8 +1,10 @@
 class SchoolTeachersController < ApplicationController
   def index
     @school = School.find(params[:id])
-    if params[:sort] == "alpha"
+    if params[:sort]
       @teachers = @school.sort_teachers_alphabetically
+    elsif params[:years]
+      @teachers = @school.filter_by_years_at_school(params[:years])
     else
       @teachers = @school.teachers
     end

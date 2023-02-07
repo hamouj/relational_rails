@@ -12,4 +12,8 @@ class School < ApplicationRecord
   def sort_teachers_alphabetically
     self.teachers.order(:name)
   end
+
+  def filter_by_years_at_school(number)
+    self.teachers.where('years_at_school > ?', number)
+  end
 end

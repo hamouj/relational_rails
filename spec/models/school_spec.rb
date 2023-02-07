@@ -43,4 +43,18 @@ describe School, type: :model do
       expect(school2.sort_teachers_alphabetically).to eq([teacher3, teacher4])
     end
   end
+
+  describe '#filter_by_years_at_school()' do
+    it 'returns teachers based on the number of years they worked at the school' do
+      school = School.create!(name: 'Frias', open_year: 2003, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+      school2 = School.create!(name: 'Robison', open_year: 1973, fully_staffed: false, created_at: DateTime.now, updated_at: DateTime.now)
+
+      teacher = school.teachers.create!(name: 'Mrs.Vicario', years_at_school: 7, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
+      teacher2 = school.teachers.create!(name: 'Mrs. Auch', years_at_school: 10, bilingual: false, created_at: DateTime.now, updated_at: DateTime.now)
+      teacher3 = school2.teachers.create!(name: 'Mrs. Hall', years_at_school: 15, bilingual: true, created_at: DateTime.now, updated_at: DateTime.now)
+      teacher4 = school2.teachers.create!(name: 'Mrs. Ramirez', years_at_school: 1, bilingual: true, created_at: DateTime.now, updated_at: DateTime.now)
+
+      expect(school.filter_by_years_at_school(8)).to eq([teacher2])
+    end
+  end
 end
